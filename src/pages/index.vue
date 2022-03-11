@@ -1,43 +1,27 @@
+<script setup>
+import { ref } from "vue";
+import useAdvice from "../composables/useAdvice";
+
+const { advices, search } = useAdvice();
+
+const searchItem = ref("");
+</script>
+
 <template>
     <div>
-        <input type="text" placeholder="Search for Advise ..." class="w-full mt-16 text-xl text-center rounded-full"/>
-        <div class="grid gap-16 pt-16 grid-col-2">
-            <p>
-                lore ipsum dolor sit amet consectetur adipisicing elit. Deserunt autem
-                reprehenderit iusto qui, dolor explicabo, quae beatae officia eveniet
-                itaque, quia magnam sunt quaerat? Vero necessitatibus impedit maiores nobis
-                aperiam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi
-                inventore magni temporibus asperiores sunt nihil maiores excepturi, velit
-                neque et non autem unde optio quos aspernatur blanditiis in eligendi
-                repellat? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-                fuga aspernatur numquam blanditiis at consectetur magnam, voluptatem
-                sapiente voluptate adipisci dolore nesciunt dignissimos! Vel omnis, nulla
-                corporis deserunt consequuntur ratione?
-            </p>
-            <p>
-                lore ipsum dolor sit amet consectetur adipisicing elit. Deserunt autem
-                reprehenderit iusto qui, dolor explicabo, quae beatae officia eveniet
-                itaque, quia magnam sunt quaerat? Vero necessitatibus impedit maiores nobis
-                aperiam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi
-                inventore magni temporibus asperiores sunt nihil maiores excepturi, velit
-                neque et non autem unde optio quos aspernatur blanditiis in eligendi
-                repellat? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-                fuga aspernatur numquam blanditiis at consectetur magnam, voluptatem
-                sapiente voluptate adipisci dolore nesciunt dignissimos! Vel omnis, nulla
-                corporis deserunt consequuntur ratione?
-            </p>
-            <p>
-                lore ipsum dolor sit amet consectetur adipisicing elit. Deserunt autem
-                reprehenderit iusto qui, dolor explicabo, quae beatae officia eveniet
-                itaque, quia magnam sunt quaerat? Vero necessitatibus impedit maiores nobis
-                aperiam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi
-                inventore magni temporibus asperiores sunt nihil maiores excepturi, velit
-                neque et non autem unde optio quos aspernatur blanditiis in eligendi
-                repellat? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-                fuga aspernatur numquam blanditiis at consectetur magnam, voluptatem
-                sapiente voluptate adipisci dolore nesciunt dignissimos! Vel omnis, nulla
-                corporis deserunt consequuntur ratione?
-            </p>
+        <input type="text"
+            v-model="searchItem"
+            @change="search(searchItem)"
+            placeholder="Search for Advise ..." 
+            class="w-full py-4 mt-16 text-xl text-center rounded-full"/>
+        />
+
+        <div class="grid grid-cols-2 gap-16 pt-16">
+            <div v-for="(advice, index) in advices" :key="index">
+                <p>
+                {{ advice.advice }}
+                </p>
+            </div>
         </div>
     </div>
 </template>
