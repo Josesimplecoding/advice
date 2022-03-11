@@ -14,7 +14,7 @@ const searchItem = ref("");
             @change="search(searchItem)"
             placeholder="Search for Advise ..." 
             class="w-full py-4 mt-16 text-xl text-center rounded-full"/>
-        />
+        
 
         <div class="grid grid-cols-2 gap-16 pt-16">
             <div v-for="(advice, index) in advices" :key="index">
